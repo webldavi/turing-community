@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Card from "../components/card";
+import Card from "../components/Card";
 function Main(){
   const [myListCard, setMyListCard] = useState([
     {src: '/assets/discord.png', title: 'Comunidade no discord', href: 'https://discord.gg/Tp4p3n7N69'},
