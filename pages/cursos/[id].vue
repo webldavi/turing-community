@@ -179,6 +179,7 @@ const filtredCourse = ref(
 const iframeUpdate = ref(null);
 const iframe = ref(null);
 const selectedLesson = ref(0);
+
 function updateCurrentLesson(index) {
   selectedLesson.value = index;
   iframeUpdate.value.parentNode.removeChild(iframe.value);
@@ -188,16 +189,17 @@ function updateCurrentLesson(index) {
 }
 
 function updateCheckButton(index) {
-  filtredCourse.value.lessons[index].checked = !filtredCourse.value.lessons[index].checked;
+  filtredCourse.value.lessons[index].checked =
+    !filtredCourse.value.lessons[index].checked;
   localStorage.setItem(
     `${filtredCourse.value._id}`,
     JSON.stringify(filtredCourse.value.lessons)
   );
 }
 onMounted(() => {
-  filtredCourse.value.lessons = JSON.parse(
-    localStorage.getItem(`${filtredCourse.value._id}`)
-  );
+  filtredCourse.value.lessons =
+    JSON.parse(localStorage.getItem(`${filtredCourse.value._id}`)) ||
+    filtredCourse.value.lessons;
 });
 const themeStore = useTheme();
 const computedTheme = computed(() => {
