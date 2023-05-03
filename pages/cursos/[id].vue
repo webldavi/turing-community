@@ -7,7 +7,7 @@
       <div
         class="w-full h-max flex flex-col gap-2 rounded-lg border-2 border-gray-400 py-2 px-4"
       >
-        <button class="flex flex-row gap-1 w-max">
+        <button class="flex flex-row gap-1 w-max" @click="navigateTo('/cursos')">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

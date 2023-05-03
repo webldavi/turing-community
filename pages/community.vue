@@ -78,7 +78,7 @@
         <ul class="text-lg pl-10 list-disc">
           <li>Chave pix: community.turing@gmail.com</li>
           <li>Nome de: Luís Daví Rebouças</li>
-          <li>Oganização</li>
+          <li>Oganização: NU-PAGAMENTOS</li>
         </ul>
       </div>
     </section>
