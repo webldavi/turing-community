@@ -188,10 +188,10 @@ function updateCurrentLesson(index) {
 }
 
 function updateCheckButton(index) {
-  filtredCourse.lessons[index].checked = !filtredCourse.lessons[index].checked;
+  filtredCourse.value.lessons[index].checked = !filtredCourse.value.lessons[index].checked;
   localStorage.setItem(
-    `${filtredCourse._id}`,
-    JSON.stringify(filtredCourse.lessons)
+    `${filtredCourse.value._id}`,
+    JSON.stringify(filtredCourse.value.lessons)
   );
 }
 onMounted(() => {
