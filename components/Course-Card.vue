@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-80 h-44 flex flex-col justify-between gap-2 border-2 border-gray-500 p-2 rounded-xl cursor-pointer hover:border-blue-500 hover:shadow-lg hover:shadow-cyan-500/50"
+    class="w-80 transition-all h-44 flex flex-col justify-between gap-2 border-2 border-gray-500 p-2 rounded-xl cursor-pointer hover:border-blue-500 hover:shadow-lg hover:shadow-cyan-500/50"
     @click="navigateTo(props.to)"  
     >
     <span class="text-3xl">{{ course.title }}</span>

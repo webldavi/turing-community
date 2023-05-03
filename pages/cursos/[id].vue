@@ -101,7 +101,7 @@
           </button>
           <div class="flex flex-col gap-1">
             <span
-              class="text-xl hover:text-blue-default"
+              class="text-xl hover:text-blue-default transition-all"
               @click="updateCurrentLesson(index)"
               >{{ lesson.title }}</span
             >

@@ -11,4 +11,12 @@ export default defineNuxtConfig({
         autoprefixer: {},
       },
     },
+    app: {
+      head:{ 
+        title: 'Turing Community | Portal',
+        link: [
+          {rel: 'icon', href: '/_nuxt/assets/images/TuringLogo.png'}
+        ]
+      }
+    }
   })
