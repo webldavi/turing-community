@@ -9,4 +9,8 @@
 import { useTheme } from '~/stores/store';
 const themeStore = useTheme()
 
+onMounted(()=>{
+    themeStore.getThemeForLocalStorage(JSON.parse(localStorage.getItem('theme')))
+})
+
 </script>

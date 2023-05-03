@@ -79,7 +79,11 @@
           :key="index"
           class="w-full py-2 px-4 flex flex-row justify-start gap-4 border-2 rounded-lg items-center cursor-pointer border-gray-400 hover:border-blue-500 hover:shadow-lg hover:shadow-cyan-500/50"
         >
-          <button class="h-max w-max rounded-full" :class="{'bg-green-400 text-green-900': lesson.checked}" @click="updateCheckButton(index)" >
+          <button
+            class="h-max w-max rounded-full"
+            :class="{ 'bg-green-400 text-green-900': lesson.checked }"
+            @click="updateCheckButton(index)"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -96,7 +100,11 @@
             </svg>
           </button>
           <div class="flex flex-col gap-1">
-            <span class="text-xl" @click="updateCurrentLesson(index)">{{ lesson.title }}</span>
+            <span
+              class="text-xl hover:text-blue-default"
+              @click="updateCurrentLesson(index)"
+              >{{ lesson.title }}</span
+            >
             <div class="flex flex-row gap-1 items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -118,34 +126,43 @@
         </div>
       </div>
     </div>
-    <div class="w-full lg:flex-1 flex flex-col gap-4">
-        <iframe id="iframe" :src="filtredCourse.lessons[selectedLesson].link" ></iframe>
-        
-        <div class="w-full px-4 py-2 rounded-lg border-2 border-gray-400 flex flex-row justify-between items-center">
-            <h1 class="text-2xl">{{ filtredCourse.lessons[selectedLesson].title }}</h1>
-            <div class="w-max flex flex-row gap-2 items-center justify-center">
-            <div class="p-2 bg-blue-default/75 h-max w-max rounded-lg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <div class="flex flex-col">
-              <span class="text-sm">Duração</span>
-              <span class="text-lg">{{ filtredCourse.lessons[selectedLesson].time }}</span>
-            </div>
+    <div class="w-full lg:flex-1 flex flex-col gap-4" ref="iframeUpdate">
+      <iframe
+        id="iframe"
+        ref="iframe"
+        :src="filtredCourse.lessons[selectedLesson].link"
+      ></iframe>
+      <div
+        class="w-full px-4 py-2 rounded-lg border-2 border-gray-400 flex flex-row justify-between items-center"
+      >
+        <h1 class="text-2xl">
+          {{ filtredCourse.lessons[selectedLesson].title }}
+        </h1>
+        <div class="w-max flex flex-row gap-2 items-center justify-center">
+          <div class="p-2 bg-blue-default/75 h-max w-max rounded-lg">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-sm">Duração</span>
+            <span class="text-lg">{{
+              filtredCourse.lessons[selectedLesson].time
+            }}</span>
           </div>
         </div>
+      </div>
     </div>
   </main>
 </template>
@@ -153,26 +170,35 @@
 import { useTheme, useCourse } from "~/stores/store";
 
 const courseStore = useCourse();
-const filtredCourse = courseStore.courseList.filter(
-  (c) => c._id == JSON.parse(useRoute().params.id)
-)[0];
+const filtredCourse = ref(
+  courseStore.courseList.filter(
+    (c) => c._id == JSON.parse(useRoute().params.id)
+  )[0]
+);
 
-
-const selectedLesson = ref(0)
-function updateCurrentLesson(index){
-    selectedLesson.value = index
-    document.getElementById('iframe').src = filtredCourse.lessons[selectedLesson.value].link
+const iframeUpdate = ref(null);
+const iframe = ref(null);
+const selectedLesson = ref(0);
+function updateCurrentLesson(index) {
+  selectedLesson.value = index;
+  iframeUpdate.value.parentNode.removeChild(iframe.value);
+  iframeUpdate.value.innerHTML = `<iframe id="iframe" src="${
+    filtredCourse.value.lessons[selectedLesson.value].link
+  }"></iframe> ${myContent}`;
 }
 
-
-function updateCheckButton(index){
-    filtredCourse.lessons[index].checked = !filtredCourse.lessons[index].checked
-    localStorage.setItem(`${filtredCourse._id}`, JSON.stringify(filtredCourse.lessons))
+function updateCheckButton(index) {
+  filtredCourse.lessons[index].checked = !filtredCourse.lessons[index].checked;
+  localStorage.setItem(
+    `${filtredCourse._id}`,
+    JSON.stringify(filtredCourse.lessons)
+  );
 }
-onMounted(()=>{
-    filtredCourse.lessons = JSON.parse(localStorage.getItem(`${filtredCourse._id}`))
-})
-
+onMounted(() => {
+  filtredCourse.lessons = JSON.parse(
+    localStorage.getItem(`${filtredCourse._id}`)
+  );
+});
 const themeStore = useTheme();
 const computedTheme = computed(() => {
   return {
@@ -183,9 +209,8 @@ const computedTheme = computed(() => {
 </script>
 
 <style>
-#iframe{
-    width: 100%;
-    height: 60vh;
+#iframe {
+  width: 100%;
+  height: 60vh;
 }
-
 </style>

@@ -8,6 +8,9 @@ export const useTheme = defineStore('theme', {
         updateTheTheme(){
             this.isDark = !this.isDark
             localStorage.setItem('theme', JSON.stringify(this.isDark))
+        },
+        getThemeForLocalStorage(themeValue){
+            return this.isDark = themeValue
         }
     }
 })
