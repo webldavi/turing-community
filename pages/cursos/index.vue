@@ -20,7 +20,9 @@
       </ul>
     </section>
     <section class="flex flex-wrap flex-row gap-8 items-center justify-center md:justify-between">
-      <span class="text-6xl" v-if="courseList.length <= 0">EM BREVE!</span>
+      <div class="w-full sm:w-96" v-if="courseList.length <= 0">
+        <img src="../../assets/images/CommingSoon.png" alt="">
+      </div>
       <CourseCard
         v-for="(course, index) in courseList"
         :key="index"
