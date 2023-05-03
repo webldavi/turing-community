@@ -31,7 +31,7 @@
       <Nav-link to="/cursos">Cursos</Nav-link>
       <Nav-link to="/community">Comumidade</Nav-link>
     </div>
-    <button class="md:hidden">
+    <button class="md:hidden text-white-100" @click="drawerStore.updateDrawer()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -51,6 +51,7 @@
 </template>
 
 <script setup>
-import { useTheme } from '~/stores/store';
-const themeStore = useTheme()
+import { useTheme, useDrawer } from '~/stores/store';
+const themeStore = useTheme();
+const drawerStore = useDrawer();
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="p-2 text-xl cursor-pointer text-white-100" :href="props.to">
+  <NuxtLink class="p-2 cursor-pointer text-white-100" :href="props.to">
     <slot />
   </NuxtLink>
 </template> 

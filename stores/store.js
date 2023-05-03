@@ -22,3 +22,16 @@ export const useCourse = defineStore('Course', {
         }
     }
 })
+
+export const useDrawer = defineStore('drawer', {
+    state(){
+        return {
+            actived: false
+        }
+    },
+    actions:{
+        updateDrawer(){
+            this.actived = !this.actived
+        }
+    }
+})
