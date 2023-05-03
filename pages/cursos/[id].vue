@@ -196,7 +196,7 @@ function updateCheckButton(index) {
 }
 onMounted(() => {
   filtredCourse.value.lessons = JSON.parse(
-    localStorage.getItem(`${filtredCourse._id}`)
+    localStorage.getItem(`${filtredCourse.value._id}`)
   );
 });
 const themeStore = useTheme();
