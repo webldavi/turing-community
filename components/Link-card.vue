@@ -1,6 +1,6 @@
 <template>
   <div
-          class="w-64 h-52 flex items-center justify-between text-center flex-col gap-2 border border-blue-default rounded-xl p-2 border-blue-500 shadow-lg shadow-cyan-500/50"
+          class="w-64 h-64 flex items-center justify-between text-center flex-col gap-2 border border-blue-default rounded-xl p-2 border-blue-500 shadow-lg shadow-cyan-500/50"
         >
           <span class="text-xl">{{ props.title }}</span>
           <p>
