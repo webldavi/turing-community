@@ -7,7 +7,10 @@
       <div
         class="w-full h-max flex flex-col gap-2 rounded-lg border-2 border-gray-400 py-2 px-4"
       >
-        <button class="flex flex-row gap-1 w-max" @click="navigateTo('/cursos')">
+        <button
+          class="flex flex-row gap-1 w-max"
+          @click="navigateTo('/cursos')"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -48,6 +51,7 @@
               <span>Total de</span>
               <span class="text-lg">{{ filtredCourse.classqty }} Aulas</span>
             </div>
+            
           </div>
           <div class="w-max flex flex-row gap-2 items-center justify-center">
             <div class="p-2 bg-blue-default/75 h-max w-max rounded-lg">
@@ -127,11 +131,7 @@
       </div>
     </div>
     <div class="w-full lg:flex-1 flex flex-col gap-4" ref="iframeUpdate">
-      <iframe
-        id="iframe"
-        ref="iframe"
-        :src="filtredCourse.lessons[selectedLesson].link"
-      ></iframe>
+      <VideoPlayer :source="filtredCourse.lessons[selectedLesson].link"/>
       <div
         class="w-full px-4 py-2 rounded-lg border-2 border-gray-400 flex flex-row justify-between items-center"
       >
@@ -175,17 +175,10 @@ const filtredCourse = ref(
     (c) => c._id == JSON.parse(useRoute().params.id)
   )[0]
 );
-
-const iframeUpdate = ref(null);
-const iframe = ref(null);
 const selectedLesson = ref(0);
 
 function updateCurrentLesson(index) {
   selectedLesson.value = index;
-  iframeUpdate.value.parentNode.removeChild(iframe.value);
-  iframeUpdate.value.innerHTML = `<iframe id="iframe" src="${
-    filtredCourse.value.lessons[selectedLesson.value].link
-  }"></iframe> ${myContent}`;
 }
 
 function updateCheckButton(index) {
@@ -215,4 +208,5 @@ const computedTheme = computed(() => {
   width: 100%;
   height: 60vh;
 }
+
 </style>
