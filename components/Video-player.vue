@@ -8,7 +8,7 @@
         ref="videoReference"
         @click="playOrPause"
       >
-        <source :src="props.source" type="video/mp4" />
+        <source src="https://raw.githubusercontent.com/webldavi/turing-community/main/assets/Videos/videoplayback.mp4" type="video/mp4" />
       </video>
       <div
         class="w-full h-full flex items-center justify-center top-0 absolute"
