@@ -1,17 +1,11 @@
 <template>
-  <nav
-    class="w-full h-16 bg-blue-default righteous px-8 sm:px-16 flex flex-row justify-between"
-  >
-    <div
-      class="flex justify-center items-center sm:gap-2 sm:flex-row flex-col h-full w-max text-white-100 text-xl sm:text-3xl"
-    >
+  <nav class="nav">
+    <div class="brand_name">
       <span>Turing</span>
       <span>Community</span>
     </div>
-    <div
-      class="w-max hidden h-full md:flex items-center justify-center gap-5 lg:gap-16"
-    >
-      <button class="text-white-100" @click="themeStore.updateTheTheme()">
+    <div class="theme_button">
+      <button @click="themeStore.updateTheTheme()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -31,7 +25,7 @@
       <Nav-link to="/cursos">Cursos</Nav-link>
       <Nav-link to="/community">Comumidade</Nav-link>
     </div>
-    <button class="md:hidden text-white-100" @click="drawerStore.updateDrawer()">
+    <button @click="drawerStore.updateDrawer()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -51,7 +45,22 @@
 </template>
 
 <script setup>
-import { useTheme, useDrawer } from '~/stores/store';
+import { useTheme, useDrawer } from "~/stores/store";
 const themeStore = useTheme();
 const drawerStore = useDrawer();
 </script>
+
+<style scoped>
+.nav {
+  @apply w-full h-16 bg-blue-default px-8 sm:px-16 flex flex-row justify-between;
+}
+.nav > .brand_name {
+  @apply flex justify-center items-center sm:gap-2 sm:flex-row flex-col h-full w-max text-white-100 text-xl sm:text-3xl;
+}
+.nav > .theme_button {
+  @apply w-max hidden h-full md:flex items-center justify-center gap-5 lg:gap-16 text-white-100;
+}
+.nav > button {
+  @apply md:hidden text-white-100;
+}
+</style>

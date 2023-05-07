@@ -1,16 +1,8 @@
 <template>
-  <main
-    class="w-full min-h-screen px-8 sm:px-16 flex flex-col-reverse lg:flex-row justify-center gap-16 righteous pb-16"
-    :class="computedTheme"
-  >
-    <div class="h-max w-full lg:w-96 flex flex-col gap-8">
-      <div
-        class="w-full h-max flex flex-col gap-2 rounded-lg border-2 border-gray-400 py-2 px-4"
-      >
-        <button
-          class="flex flex-row gap-1 w-max"
-          @click="navigateTo('/cursos')"
-        >
+  <article class="article" :class="computedTheme">
+    <section class="section_1">
+      <div class="aboutCourse">
+        <button @click="navigateTo('/cursos')">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -25,13 +17,12 @@
               d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
             />
           </svg>
-
-          <span class="text-lg">Voltar</span>
+          <span>Voltar</span>
         </button>
-        <h1 class="text-2xl">{{ filtredCourse.title }}</h1>
-        <div class="w-full flex flex-row justify-between">
-          <div class="w-max flex flex-row gap-2 items-center justify-center">
-            <div class="p-2 bg-emerald-500/75 h-max w-max rounded-lg">
+        <h1>{{ filtredCourse.title }}</h1>
+        <div>
+          <div class="countLesson">
+            <div class="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -47,14 +38,13 @@
                 />
               </svg>
             </div>
-            <div class="flex flex-col">
+            <div class="icon-name">
               <span>Total de</span>
               <span class="text-lg">{{ filtredCourse.classqty }} Aulas</span>
             </div>
-            
           </div>
-          <div class="w-max flex flex-row gap-2 items-center justify-center">
-            <div class="p-2 bg-blue-default/75 h-max w-max rounded-lg">
+          <div class="countHour">
+            <div class="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -70,21 +60,16 @@
                 />
               </svg>
             </div>
-            <div class="flex flex-col">
+            <div class="icon-name">
               <span>Duração</span>
               <span class="text-lg">{{ filtredCourse.time }}h</span>
             </div>
           </div>
         </div>
       </div>
-      <div class="flex flex-col gap-4">
-        <div
-          v-for="(lesson, index) in filtredCourse.lessons"
-          :key="index"
-          class="w-full py-2 px-4 flex flex-row justify-start gap-4 border-2 rounded-lg items-center cursor-pointer border-gray-400 hover:border-blue-500 hover:shadow-lg hover:shadow-cyan-500/50"
-        >
+      <div class="lessonList">
+        <div v-for="(lesson, index) in filtredCourse.lessons" :key="index">
           <button
-            class="h-max w-max rounded-full"
             :class="{ 'bg-green-400 text-green-900': lesson.checked }"
             @click="updateCheckButton(index)"
           >
@@ -103,12 +88,8 @@
               />
             </svg>
           </button>
-          <div class="flex flex-col gap-1">
-            <span
-              class="text-xl hover:text-blue-default transition-all"
-              @click="updateCurrentLesson(index)"
-              >{{ lesson.title }}</span
-            >
+          <div>
+            <span @click="updateCurrentLesson(index)">{{ lesson.title }}</span>
             <div class="flex flex-row gap-1 items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -129,17 +110,15 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="w-full lg:flex-1 flex flex-col gap-4" ref="iframeUpdate">
-      <VideoPlayer :source="filtredCourse.lessons[selectedLesson].link"/>
-      <div
-        class="w-full px-4 py-2 rounded-lg border-2 border-gray-400 flex flex-row justify-between items-center"
-      >
-        <h1 class="text-2xl">
+    </section>
+    <section class="section_2" ref="iframeUpdate">
+      <VideoPlayer :source="filtredCourse.lessons[selectedLesson].link" />
+      <div class="aboutLesson">
+        <h1>
           {{ filtredCourse.lessons[selectedLesson].title }}
         </h1>
-        <div class="w-max flex flex-row gap-2 items-center justify-center">
-          <div class="p-2 bg-blue-default/75 h-max w-max rounded-lg">
+        <div>
+          <div class="icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -155,7 +134,7 @@
               />
             </svg>
           </div>
-          <div class="flex flex-col">
+          <div class="icon-name">
             <span class="text-sm">Duração</span>
             <span class="text-lg">{{
               filtredCourse.lessons[selectedLesson].time
@@ -163,8 +142,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </section>
+  </article>
 </template>
 <script setup>
 import { useTheme, useCourse } from "~/stores/store";
@@ -204,9 +183,70 @@ const computedTheme = computed(() => {
 </script>
 
 <style>
-#iframe {
-  width: 100%;
-  height: 60vh;
+.article {
+  @apply w-full min-h-screen px-8 sm:px-16 flex flex-col-reverse lg:flex-row justify-center gap-16 pb-16;
 }
-
+.section_1 {
+  @apply h-max w-full lg:w-96 flex flex-col gap-8;
+}
+.section_1 > .aboutCourse {
+  @apply w-full h-max flex flex-col gap-2 rounded-lg border-2 border-gray-400 py-2 px-4;
+}
+.section_1 > .aboutCourse > button {
+  @apply flex flex-row gap-1 w-max;
+}
+.section_1 > .aboutCourse > span {
+  @apply text-lg;
+}
+.section_1 > .aboutCourse > div {
+  @apply w-full flex flex-row justify-between;
+}
+.section_1 > .aboutCourse > div > .countLesson {
+  @apply w-max flex flex-row gap-2 items-center justify-center;
+}
+.section_1 > .aboutCourse > div > .countLesson > .icon {
+  @apply p-2 bg-emerald-500/75 h-max w-max rounded-lg;
+}
+.section_1 > .aboutCourse > div > .countHour > .icon {
+  @apply p-2 bg-blue-default/75 h-max w-max rounded-lg;
+}
+.section_1 > .aboutCourse > div > .countLesson > .icon-name {
+  @apply flex flex-col;
+}
+.section_1 > .aboutCourse > div > .countHour > .icon-name {
+  @apply flex flex-col;
+}
+.section_1 > .lessonList {
+  @apply flex flex-col gap-4;
+}
+.section_1 > .lessonList > div {
+  @apply w-full py-2 px-4 flex flex-row justify-start gap-4 border-2 rounded-lg items-center cursor-pointer border-gray-400 hover:border-blue-500 hover:shadow-lg hover:shadow-cyan-500/50;
+}
+.section_1 > .lessonList > div > button {
+  @apply h-max w-max rounded-full;
+}
+.section_1 > .lessonList > div > div {
+  @apply flex flex-col gap-1;
+}
+.section_1 > .lessonList > div > div > span {
+  @apply text-xl hover:text-blue-default transition-all;
+}
+.section_2 {
+  @apply w-full lg:flex-1 flex flex-col gap-4;
+}
+.section_2 > .aboutLesson {
+  @apply w-full px-4 py-2 rounded-lg border-2 border-gray-400 flex flex-row justify-between items-center;
+}
+.section_2 > .aboutLesson > h1 {
+  @apply text-2xl;
+}
+.section_2 > .aboutLesson > div {
+  @apply w-max flex flex-row gap-2 items-center justify-center;
+}
+.section_2 > .aboutLesson > div > .icon {
+  @apply p-2 bg-blue-default/75 h-max w-max rounded-lg;
+}
+.section_2 > .aboutLesson > div > .icon-name {
+  @apply flex flex-col;
+}
 </style>

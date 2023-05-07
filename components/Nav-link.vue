@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="p-2 cursor-pointer text-white-100" :href="props.to">
+  <NuxtLink class="nuxt-link" :href="props.to">
     <slot />
   </NuxtLink>
 </template> 
@@ -8,3 +8,8 @@ const props = defineProps({
   to: String,
 });
 </script>
+<style scoped>
+.nuxt-link{
+ @apply p-2 cursor-pointer text-white-100 text-lg
+}
+</style>

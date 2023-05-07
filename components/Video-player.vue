@@ -4,7 +4,6 @@
       <video
         id="video"
         class="rounded-lg"
-        autoplay
         ref="videoReference"
         @click="playOrPause"
       >
@@ -255,7 +254,7 @@
 const videoState = ref(true);
 const videoReference = ref(null);
 const percentageVideo = ref(0);
-const animationCondition = ref(true);
+const animationCondition = ref(false);
 const currentTimeUpdated = ref(0);
 const parentVideo = ref(null)
 const mounted = ref(false);
@@ -352,9 +351,9 @@ function onChangeTimeByProgressBar() {
   -webkit-appearance: none;
   width: 15px;
   height: 15px;
-  border: 4px solid #021b2a;
+  border: 4px solid #4ade80;
   border-radius: 50px;
-  background: #4ade80;
+  background: #021b2a;
   cursor: pointer;
   box-shadow: -9007px 0px 0px 9000px #4ade80;
 }

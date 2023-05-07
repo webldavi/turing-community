@@ -1,21 +1,10 @@
 <template>
-  <main
-    class="w-full min-h-screen px-8 sm:px-16 flex flex-col items-center gap-16 righteous pb-16"
-    :class="computedTheme"
-  >
-    <section
-      class="h-[70vh] flex flex-col items-center justify-center lg:flex-row-reverse w-max h-max gap-4 py-16"
-    >
-      <img
-        src="../assets/images/TuringLogo.png"
-        alt="Turing Logo"
-        class="w-full sm:w-96 h-96"
-      />
-      <div class="flex flex-col h-max gap-6 w-96">
-        <h1 class="text-2xl sm:text-4xl text-blue-secoundary text-border">
-          Contribua!
-        </h1>
-        <div class="flex flex-row gap-1">
+  <article class="article" :class="computedTheme">
+    <section class="section_1">
+      <img src="../assets/images/TuringLogo.png" alt="Turing Logo" />
+      <div>
+        <h1 class="text-border">Contribua!</h1>
+        <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -30,9 +19,9 @@
               d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
             />
           </svg>
-          <span class="text-xl">Mande seu Pull Request!</span>
+          <span>Mande seu Pull Request!</span>
         </div>
-        <div class="flex flex-row gap-1">
+        <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -48,9 +37,9 @@
             />
           </svg>
 
-          <span class="text-xl">Ajude os membros respondendo perguntas</span>
+          <span>Ajude os membros respondendo perguntas</span>
         </div>
-        <div class="flex flex-row gap-1">
+        <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -70,26 +59,21 @@
               d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z"
             />
           </svg>
-          <span class="text-xl flex-1"
+          <span
             >Contruibua financeiramente nos enviando um pix para manter a
             comunidade</span
           >
         </div>
-        <ul class="text-lg pl-10 list-disc">
+        <ul>
           <li>Chave pix: community.turing@gmail.com</li>
           <li>Nome de: Luís Daví Rebouças</li>
           <li>Oganização: NU-PAGAMENTOS</li>
         </ul>
       </div>
     </section>
-    <section class="flex flex-col gap-16 items-center">
-      <span class="text-2xl sm:text-4xl text-blue-secoundary text-border"
-        >Sobre Nós</span
-      >
-
-      <div
-        class="w-full h-full flex flex-row flex-wrap justify-center gap-4 lg:gap-16"
-      >
+    <section class="section_2">
+      <span class="text-border">Sobre Nós</span>
+      <div>
         <Link-card
           title="Instagram"
           to="https://www.instagram.com/turingcommunity/"
@@ -108,7 +92,7 @@
         </Link-card>
       </div>
     </section>
-  </main>
+  </article>
 </template>
 
 <script setup>
@@ -123,3 +107,40 @@ const computedTheme = computed(() => {
   };
 });
 </script>
+
+<style scoped>
+.article {
+  @apply w-full min-h-screen px-8 sm:px-16 flex flex-col items-center gap-16 pb-16;
+}
+.section_1 {
+  @apply h-[70vh] flex flex-col items-center justify-center lg:flex-row-reverse w-max h-max gap-4 py-16;
+}
+.section_1 > img {
+  @apply w-full sm:w-96 h-96;
+}
+.section_1 > div {
+  @apply flex flex-col h-max gap-6 w-96;
+}
+.section_1 > div > h1 {
+  @apply text-2xl sm:text-4xl text-blue-secoundary;
+}
+.section_1 > div > div {
+  @apply flex flex-row gap-1;
+}
+.section_1 > div > div > span {
+  @apply text-xl flex-1;
+}
+.section_1 > ul {
+  @apply text-lg pl-10 list-disc;
+}
+
+.section_2 {
+  @apply flex flex-col gap-16 items-center;
+}
+.section_2 > span {
+  @apply text-2xl sm:text-4xl text-blue-secoundary;
+}
+.section_2 > div {
+  @apply w-full h-full flex flex-row flex-wrap justify-center gap-4 lg:gap-16;
+}
+</style>
