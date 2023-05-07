@@ -1,5 +1,5 @@
 <template>
-  <article class="main" :class="computedTheme">
+  <article class="article" :class="computedTheme">
     <section class="section_1">
       <img
         src="../assets/images/TuringLogo.png"
@@ -52,7 +52,7 @@ definePageMeta({
 </script>
 <style scoped>
 .article {
-  @apply w-full min-h-screen px-8 sm:px-16 flex flex-col items-center gap-16 pb-16;
+  @apply w-full min-h-screen px-8 sm:px-16 flex flex-col items-center justify-center gap-16 pb-16;
 }
 
 .section_1 {
