@@ -9,6 +9,8 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxt/content": "^2.7.0",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18",
     "autoprefixer": "^10.4.14",
     "nuxt": "^3.4.3",
@@ -17,6 +19,8 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.9",
+    "axios": "^1.4.0",
+    "marked": "^5.1.1",
     "pinia": "^2.0.35"
   }
 }

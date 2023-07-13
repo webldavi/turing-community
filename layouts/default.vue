@@ -16,10 +16,10 @@ onMounted(() => {
 });
 </script>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+ @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
-    font-family: "Righteous", cursive;
+    font-family: 'Roboto', sans-serif;
 }
 
 .main {

@@ -1,13 +1,19 @@
 <template>
   <div id="VideoPlayer" class="flex flex-col gap-4 overflow-hidden rounded-lg">
-    <div class="w-full max-h-screen relative bg-[#161920] rounded-lg" ref="parentVideo">
+    <div
+      class="w-full max-h-screen relative bg-[#161920] rounded-lg"
+      ref="parentVideo"
+    >
       <video
         id="video"
         class="rounded-lg"
         ref="videoReference"
         @click="playOrPause"
       >
-        <source src="https://raw.githubusercontent.com/webldavi/turing-community/main/assets/Videos/videoplayback.mp4" type="video/mp4" />
+        <source
+          src="https://raw.githubusercontent.com/webldavi/turing-community/main/assets/Videos/videoplayback.mp4"
+          type="video/mp4"
+        />
       </video>
       <div
         class="w-full h-full flex items-center justify-center top-0 absolute"
@@ -256,20 +262,25 @@ const videoReference = ref(null);
 const percentageVideo = ref(0);
 const animationCondition = ref(false);
 const currentTimeUpdated = ref(0);
-const parentVideo = ref(null)
+const parentVideo = ref(null);
 const mounted = ref(false);
 
-const props = defineProps({
-  source: String
-})
+const videoVolume = ref(0);
 
-watch(()=>(props.source), ()=>{
-  videoReference.value.load()
-})
+const props = defineProps({
+  source: String,
+});
+
+watch(
+  () => props.source,
+  () => {
+    videoReference.value.load();
+  }
+);
 
 onMounted(() => {
   mounted.value = true;
-  videoReference.value.volume = 0.10
+  videoReference.value.volume = 0.1;
   videoReference.value.ontimeupdate = () => {
     percentageVideo.value =
       (videoReference.value.currentTime / videoReference.value.duration) * 100;
@@ -302,10 +313,12 @@ function incOrDecVolumeInVideo() {
     inc() {
       videoReference.value.volume +=
         videoReference.value.volume <= 0.9 ? 0.1 : 0;
+      videoVolume.value = videoReference.value.volume;
     },
     dec() {
       videoReference.value.volume -=
         videoReference.value.volume >= 0.1 ? 0.1 : 0;
+      videoVolume.value = videoReference.value.volume;
     },
   };
 }
