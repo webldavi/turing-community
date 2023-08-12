@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import courses from "~/data/courses";
 export const useTheme = defineStore('theme', {
     state: ()=>({
-        isDark: false,
+        isDark: true,
     }),
     actions: {
         updateTheTheme(){

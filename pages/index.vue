@@ -82,7 +82,7 @@ definePageMeta({
   @apply text-2xl sm:text-4xl text-blue-secoundary text-border;
 }
 .section_2 > div {
-  @apply w-full h-full flex flex-col md:flex-row gap-4 lg:gap-16;
+  @apply w-full h-full flex flex-col justify-center md:flex-row gap-4 lg:gap-16;
 }
 .text-border {
   text-shadow: 2px 2px 0px #000;

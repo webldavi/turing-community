@@ -82,9 +82,9 @@ function updateFilter(index) {
   @apply p-2 rounded-lg cursor-pointer;
 }
 .section_2 {
-  @apply flex flex-wrap flex-row gap-8 items-center justify-center md:justify-between;
+  @apply flex flex-wrap flex-row gap-8 items-center justify-center;
 }
 .section_2 > div {
-  @apply w-full sm:w-96;
+  @apply w-full sm:w-96 ;
 }
 </style>
